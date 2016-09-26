@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import Router, { hasHistory } from 'react-router';
 import ContactForm from './ContactForm';
-import ContactFormApi from './Api/ContactApi';
+import ContactFormApi from '../api/ContactApi';
 import toastr from 'toastr';
 
 class ManageContactPage extends Component {
     constructor() {
         super();
+        this.ContactApi = new ContactFormApi();
         this.State = {
             contact: { id: '', firstName: '', Title: '', phoneNumber: '', address: '', city: '', state: '', zipCode: ''},
             errors: {},
@@ -22,7 +22,7 @@ class ManageContactPage extends Component {
     componentWillMount(){
         const contactId = this.props.params.id //from the path '/contact:id'
         if(contactId) {
-            this.setState({contact: ContactApi.getContactById(contactId)});
+            this.setState({contact: this.ContactApi.getContactById(contactId)});
         }
     }
 
@@ -30,12 +30,12 @@ class ManageContactPage extends Component {
         this.setState({dirty: true});
         const field = event.target.name;
         const value = event.target.value;
-        this.state.contact[field] = value;
-        return this.setState({contact: this.state.contact});
+        this.setState({contact[field]: value});
+        return this.setState({contact: this.State.contact});
     }
 
     contactFormIsValid() {
-        const formIsValid = true;
+        let formIsValid = true;
         this.state.errors = {};  //clear error object
 
         if(this.state.author.firstName.length === 0) {

@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import Router, {Link} from 'react-router';
-
 class Home extends Component {
     render() {
         return (

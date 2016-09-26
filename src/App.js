@@ -3,6 +3,7 @@ import Header from './common/header';
 import Home from './common/homepage';
 import ContactPage from './contacts/ContactPage';
 import ContactForm from './contacts/ContactForm';
+import ManageContactPage from './contacts/ManageContactPage';
 
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
     switch(this.props.route) {
       case 'contacts': Child = ContactPage; break;
       case 'addcontact': Child = ContactForm; break;
+      case 'editcontact': Child = ManageContactPage; break;
       default: Child = Home;
     }
 

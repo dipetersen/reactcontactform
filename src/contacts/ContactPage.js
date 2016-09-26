@@ -5,15 +5,14 @@ import ContactList from './ContactList';
 class ContactPage extends Component {
     constructor(props){
         super(props);
+
         this.State = {
             contacts: []
         }
     }
 
     componentDidMount() {
-        if(this.isMounted()){
-            this.setState({contacts: ContactFormApi.getAllContacts()});
-        }
+        this.setState({contacts: ContactFormApi.getAllContacts()});
     }
 
     render() {
