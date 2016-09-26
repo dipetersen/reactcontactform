@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Utils from "./Utils";
+import Utils from "../Utils";
 
 var STATES = [
     'AL|Alabama', 'AK|Alaska', 'AZ|Arizona', 'AR|Arkansas', 'CA|California', 'CO|Colorado', 'CT|Connecticut', 'DE|Delaware', 'DC|District of Columbia', 'FL|Florida',
@@ -103,6 +103,7 @@ class ContactForm extends Component {
                 {this.renderTextInput('city','City')}
                 {this.renderSelect('state',"State",STATES)}
                 {this.renderTextInput('zipCode','Zip Code')}
+                <input type="submit" value="Save" className="btn btn-default" onClick={this.props.onSave} />
             </div>
         );
     }

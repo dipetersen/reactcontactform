@@ -1,6 +1,5 @@
 class Utils {
 
-
     static CombineClasses(staticClassName, conditionalClassNames) {
         var classNames = []
         if (typeof conditionalClassNames === 'undefined') {
