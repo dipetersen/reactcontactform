@@ -1,23 +1,20 @@
 import React, {Component} from 'react';
-import Router, {Route, DefaultRoute, NotFoundRoute, hashHistory} from 'react-router';
-import App from './app';
+import {Route} from 'react-router';
+import App from './App';
 import Home from './common/homepage';
 import ContactPage from './contacts/ContactPage';
-import ManageContactPage from './contacts/manageContactPage';
-import NotFoundPage from './notFoundPage';
+import ManageContactPage from './contacts/ManageContactPage';
+import NotFoundPage from './common/notFoundPage';
 
 class routes extends Component {
   render() {
     return (
-      <Router history={hashHistory}>
-        <Route name="app" path="/" component={App}>
-          <DefaultRoute component={Home} />
-          <Route name="contacts" component={ContactPage} />
-          <Route name="addContact" path="contact" component={ManageContactPage} />
-          <Route name="manageAuthor" path="contact/:id" component={ManageContactPage} />
-          <NotFoundRoute component={NotFoundPage} />
-        </Route>
-      </Router>
+      <Route>
+        <Route name="app" path="/" component={App} />
+        <Route name="contacts" path="/contacts" component={ContactPage} />
+        <Route name="addContact" path="/contact" component={ManageContactPage} />
+        <Route name="editContact" path="/contact/:id" component={ManageContactPage} />
+      </Route>
     );
   }
 }

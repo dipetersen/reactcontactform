@@ -7,11 +7,11 @@ class ManageContactPage extends Component {
     constructor() {
         super();
         this.ContactApi = new ContactFormApi();
-        this.State = {
+        this.state = {
             contact: { id: '', firstName: '', Title: '', phoneNumber: '', address: '', city: '', state: '', zipCode: ''},
             errors: {},
             dirty: false
-        }
+        };
     }
     willTransitionFrom(transition, component) {
         if(component.state.dirty && !confirm('Leave without saving?')) {
@@ -20,7 +20,7 @@ class ManageContactPage extends Component {
     }
 
     componentWillMount(){
-        const contactId = this.props.params.id //from the path '/contact:id'
+        const contactId = this.props.params.id;
         if(contactId) {
             this.setState({contact: this.ContactApi.getContactById(contactId)});
         }
@@ -28,31 +28,33 @@ class ManageContactPage extends Component {
 
     setContactState(event) {
         this.setState({dirty: true});
+        const contact = this.state.contact;
         const field = event.target.name;
         const value = event.target.value;
-        this.setState({contact[field]: value});
-        return this.setState({contact: this.State.contact});
+        contact[field] = value;
+        return this.setState({contact: contact});
     }
 
     contactFormIsValid() {
         let formIsValid = true;
-        this.state.errors = {};  //clear error object
+        let errors = this.state.errors;
+        errors = {};  //clear error object
 
         if(this.state.author.firstName.length === 0) {
-            this.state.errors.firstName = "First Name is required";
+            errors.firstName = "First Name is required";
             formIsValid = false;
         }
 
         if(this.state.author.Title.length === 0) {
-            this.state.errors.Title = "Last Name is required";
+            errors.Title = "Last Name is required";
             formIsValid = false;
         }
         if(this.state.author.phoneNumber.length === 0) {
-            this.state.errors.phoneNumber = "Phone Number is required";
+            errors.phoneNumber = "Phone Number is required";
             formIsValid = false;
         }
 
-        this.setState({errors: this.state.errors});
+        this.setState({errors: errors});
         return formIsValid;
         
     }
@@ -62,13 +64,11 @@ class ManageContactPage extends Component {
         if(!this.contactFormIsValid()) {
             return;
         }
-        ContactApi.saveContact(this.state.contact);
+        this.ContactApi.saveContact(this.state.contact);
         this.setState({dirty: false});
         toastr.success('Contact saved');
         this.transitionTo('contacts');
     }
-
-
 
     render() {
         return (

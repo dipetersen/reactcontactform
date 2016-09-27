@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import ManageContactPage from './ManageContactPage';
+import {Link} from 'react-router';
 
 class ContactList extends Component {
     render() {
         const createContactRow = function(contact) {
             return (
                     <tr key={contact.id}>
-                        <td><a href="/#managecontact?id={contact.id}">{contact.id}</a></td>
+                        <td><Link to="editContact" params={{id: contact.id}}>{contact.id}</Link></td>
                         <td>{contact.firstName}</td>
                         <td>{contact.Title}</td>
                         <td>{contact.phoneNumber}</td>
