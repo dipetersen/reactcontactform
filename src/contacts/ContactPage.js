@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 import ContactFormApi from '../api/ContactApi';
 import ContactList from './ContactList';
 
@@ -20,7 +21,7 @@ class ContactPage extends Component {
         return (
             <div>
                 <h1>Contacts</h1>
-                <a href="/#addcontact" className="btn btn-default">Add Contact</a>
+                <Link to="addContact" className="btn btn-default">Add Contact</Link>
                 <ContactList contacts={this.state.contacts} />
             </div>
         );

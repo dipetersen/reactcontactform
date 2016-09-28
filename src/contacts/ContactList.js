@@ -4,9 +4,13 @@ import {Link} from 'react-router';
 class ContactList extends Component {
     render() {
         const createContactRow = function(contact) {
+            const route = "manageContact/:" + contact.id;
             return (
+
                     <tr key={contact.id}>
-                        <td><Link to="editContact" params={{id: contact.id}}>{contact.id}</Link></td>
+                        <td>
+                            <Link to={route}>{contact.id}</Link>
+                        </td>
                         <td>{contact.firstName}</td>
                         <td>{contact.Title}</td>
                         <td>{contact.phoneNumber}</td>
@@ -21,7 +25,7 @@ class ContactList extends Component {
 
         return (
             <div>
-                <table>
+                <table className="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>

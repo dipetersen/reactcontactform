@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Header from './common/header';
-import {RouteHandler} from 'react-router';
 
 
 
@@ -10,7 +9,7 @@ class App extends Component {
       <div>
         <Header />
         <div className="container-fluid">
-          <RouteHandler />
+          {this.props.children}
         </div>
       </div>
     );

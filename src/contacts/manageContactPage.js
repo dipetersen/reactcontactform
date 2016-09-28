@@ -20,6 +20,7 @@ class ManageContactPage extends Component {
     }
 
     componentWillMount(){
+        console.log("passed in parameter id::" + this.props.params.id);
         const contactId = this.props.params.id;
         if(contactId) {
             this.setState({contact: this.ContactApi.getContactById(contactId)});
