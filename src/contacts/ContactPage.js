@@ -21,7 +21,7 @@ class ContactPage extends Component {
         return (
             <div>
                 <h1>Contacts</h1>
-                <Link to="addContact" className="btn btn-default">Add Contact</Link>
+                <Link to="contact" className="btn btn-default">Add Contact</Link>
                 <ContactList contacts={this.state.contacts} />
             </div>
         );

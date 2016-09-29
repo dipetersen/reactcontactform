@@ -3,27 +3,33 @@ import ContactForm from './ContactForm';
 import ContactFormApi from '../api/ContactApi';
 import toastr from 'toastr';
 
+var ContactApi = new ContactFormApi();
+
+
 class ManageContactPage extends Component {
     constructor() {
         super();
-        this.ContactApi = new ContactFormApi();
         this.state = {
             contact: { id: '', firstName: '', Title: '', phoneNumber: '', address: '', city: '', state: '', zipCode: ''},
             errors: {},
             dirty: false
         };
+        this.saveContact = this.saveContact.bind(this);
+        this.setContactState = this.setContactState.bind(this);
+        console.log(ContactApi);
     }
+    /*
     willTransitionFrom(transition, component) {
         if(component.state.dirty && !confirm('Leave without saving?')) {
             transition.abort();
         }
     }
-
+    */
     componentWillMount(){
         console.log("passed in parameter id::" + this.props.params.id);
         const contactId = this.props.params.id;
         if(contactId) {
-            this.setState({contact: this.ContactApi.getContactById(contactId)});
+            this.setState({contact: ContactApi.getContactById(contactId)});
         }
     }
 
@@ -35,7 +41,7 @@ class ManageContactPage extends Component {
         contact[field] = value;
         return this.setState({contact: contact});
     }
-
+    /*
     contactFormIsValid() {
         let formIsValid = true;
         let errors = this.state.errors;
@@ -59,13 +65,13 @@ class ManageContactPage extends Component {
         return formIsValid;
         
     }
-
+    */
     saveContact(event) {
         event.preventDefault();
-        if(!this.contactFormIsValid()) {
-            return;
-        }
-        this.ContactApi.saveContact(this.state.contact);
+        //if(!this.contactFormIsValid()) {
+        //    return;
+        //}
+        ContactApi.saveContact(this.state.contact);
         this.setState({dirty: false});
         toastr.success('Contact saved');
         this.transitionTo('contacts');

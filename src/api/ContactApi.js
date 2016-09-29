@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ , { find, clone } from 'lodash';
 
 var contacts =   
     [
@@ -43,7 +43,8 @@ class ContactFormApi {
 
     getContactById(id) {
         console.log("id passed to getContactById::" + id);
-        const contact = _.find(contacts, {'id' : id});
+        const contact = _.find(contacts, {id : id});
+        console.log("Contact");
         console.log(contact);
         return this._clone(contact);
     }

@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 class ContactList extends Component {
     render() {
         const createContactRow = function(contact) {
-            const route = "manageContact/:" + contact.id;
+            const route = "contact/:" + contact.id;
             return (
 
                     <tr key={contact.id}>
