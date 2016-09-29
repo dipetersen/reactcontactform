@@ -43,6 +43,8 @@ class ContactFormApi {
 
     getContactById(id) {
         console.log("id passed to getContactById::" + id);
+        console.log("Find method of lodash");
+        console.log(_.find());
         const contact = _.find(contacts, {id : id});
         console.log("Contact");
         console.log(contact);
