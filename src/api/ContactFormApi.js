@@ -28,8 +28,8 @@ class ContactFormApi {
                                 "Accept" : "application/json;odata=verbose"
                             }
                         });
-        contacts.done(function(results){
-            return results.data.d;
+        contacts.done(function(data){
+            return data.d.results;
         });
         contacts.fail(function(error){
             console.log(error);
@@ -45,8 +45,8 @@ class ContactFormApi {
                                 "Accept" : "application/json;odata=verbose"
                             }
                         });
-        contact.done(function(results){
-            return results.data.d;
+        contact.done(function(data){
+            return data.d;
         });
         contact.fail(function(error){
             console.log("getContactById_Error:  " + JSON.stringify(error));
