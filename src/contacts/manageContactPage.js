@@ -37,10 +37,13 @@ class ManageContactPage extends Component {
     }
     saveContact(event) {
         event.preventDefault();
-        ContactApi.newContact(this.state.contact);
+        if(this.state.contact.id !== undefined) {
+            ContactApi.updateContact(this.state.contact);
+        } else {
+            ContactApi.newContact(this.state.contact);
+        }
         this.setState({dirty: false});
         toastr.success('Contact saved');
-        console.log(this);
         //this.transitionTo('contacts');
     }
 

@@ -54,9 +54,14 @@ class ContactFormApi {
     }
 
     updateContact(contact){
+        console.log("UpdateContact");
+        console.log(contact);
         const id = contact.id;
+        console.log("ID: " + id);
         const existingContactIndex = contacts.findIndex(c => c.id === id);
-        this.contacts.splice(existingContactIndex, 1, contact);
+        console.log("ExistingContactIndex::" + existingContactIndex);
+
+        contacts.splice(existingContactIndex, 1, contact);
     }
 
     newContact(contact) {
