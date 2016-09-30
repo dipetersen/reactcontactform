@@ -16,6 +16,7 @@ class ContactFormApi {
         this.webUrl = _spPageContextInfo.webAbsoluteUrl;
         this.siteUrl = _spPageContextInfo.siteAbsoluteUrl;
         this.listName = "ContactForm";
+        console.log(this.params);
     }
 
     getAllContacts() {

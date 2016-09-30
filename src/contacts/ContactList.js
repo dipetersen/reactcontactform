@@ -4,12 +4,11 @@ import {Link} from 'react-router';
 class ContactList extends Component {
     render() {
         const createContactRow = function(contact) {
-            const route = "contact/:" + contact.id;
             return (
 
                     <tr key={contact.id}>
                         <td>
-                            <Link to={route}>{contact.id}</Link>
+                            <Link to={`contact/${contact.id}`}>{contact.id}</Link>
                         </td>
                         <td>{contact.firstName}</td>
                         <td>{contact.Title}</td>

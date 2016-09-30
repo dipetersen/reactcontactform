@@ -1,7 +1,6 @@
-import _ , { find, clone } from 'lodash';
 
-var contacts =   
-    [
+var contacts =
+    [    
         {id:1,firstName:"Kelly",Title:"Stanley",phoneNumber:"1-(406)211-1506",address:"17 Debra Lane",city:"Missoula",state:"MT",zipCode:"59806"},
         {id:2,firstName:"Katherine",Title:"Wagner",phoneNumber:"1-(816)328-8808",address:"01886 Buhler Center",city:"Kansas City",state:"MO",zipCode:"64144"},
         {id:3,firstName:"Frank",Title:"Anderson",phoneNumber:"1-(412)530-7843",address:"05 Reindahl Avenue",city:"Pittsburgh",state:"PA",zipCode:"15220"},
@@ -42,26 +41,27 @@ class ContactFormApi {
     }
 
     getContactById(id) {
-        console.log("id passed to getContactById::" + id);
-        console.log("Find method of lodash");
-        console.log(_.find());
-        const contact = _.find(contacts, {id : id});
-        console.log("Contact");
+        const idNumber = parseInt(id);
+        const contact = contacts.find(contact => contact.id === idNumber);
         console.log(contact);
         return this._clone(contact);
     }
 
     deleteContact(id) {
-        _.remove(contacts, {id: id});
+        const idx = contacts.findIndex(contact => contact.id === id);
+        console.log(idx);
+        contacts = [...contacts.slice(0,idx), ...contacts.slice(idx+1)]; 
     }
 
     updateContact(contact){
-        const existingContactIndex = _.indexOf(contacts, _.find(contacts, {id: contact.id}));
+        const id = contact.id;
+        const existingContactIndex = contacts.findIndex(c => c.id === id);
         this.contacts.splice(existingContactIndex, 1, contact);
     }
 
     newContact(contact) {
         contact.id = this._generateId();
+        console.log(contact);
         contacts.push(contact);
     }
 
