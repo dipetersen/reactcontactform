@@ -35,6 +35,7 @@ class ManageContactPage extends Component {
         contact[field] = value;
         return this.setState({contact: contact});
     }
+
     saveContact(event) {
         event.preventDefault();
         if(this.state.contact.id !== undefined) {
@@ -44,7 +45,7 @@ class ManageContactPage extends Component {
         }
         this.setState({dirty: false});
         toastr.success('Contact saved');
-        //this.transitionTo('contacts');
+        this.context.router.transitionTo('/contacts');
     }
 
     render() {
@@ -58,5 +59,8 @@ class ManageContactPage extends Component {
     }
 }
 
+ManageContactPage.contextTypes = {
+    router: React.PropTypes.object
+}
 
 export default ManageContactPage;
