@@ -6,9 +6,9 @@ class ContactList extends Component {
         const createContactRow = function(contact) {
             return (
 
-                    <tr key={contact.id}>
+                    <tr key={contact.ID}>
                         <td>
-                            <Link to={`contact/${contact.id}`}>{contact.id}</Link>
+                            <Link to={`contact/${contact.ID}`}>{contact.ID}</Link>
                         </td>
                         <td>{contact.firstName}</td>
                         <td>{contact.Title}</td>

@@ -13,6 +13,7 @@ class App extends Component {
       <div>
         <Header />
           <div className="container-fluid">
+              <Match exactly pattern="/contactform.aspx" component={Home} />
               <Match exactly pattern="/" component={Home} />
               <Match pattern="/contacts" component={ContactPage} />
               <Match pattern="/newcontact" component={ManageContactPage} />
