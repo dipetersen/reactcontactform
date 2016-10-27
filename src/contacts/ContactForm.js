@@ -12,12 +12,14 @@ const STATES = [
 
 
 class ContactForm extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         console.log('ContactForm Constructor')
+        console.log(this.props);
     }
 
     renderTextInput(id, label, value) {
+        console.log(`Rendering Text Input with the following id::${id} :: label:: ${label} :: value: ${value}`);
         return this.renderField(id,label,
             <input type="text" onChange={this.props.onChange} className="form-control" id={id} ref={id} defaultValue={value}/>
         )
@@ -53,6 +55,8 @@ class ContactForm extends Component {
     }
 
     render() {
+        console.log("contact form render");
+        console.log(this.props.contact);
         return (
             <div className="form-horizontal">
                 {this.renderTextInput('firstName', 'First Name', this.props.contact.firstName)}
