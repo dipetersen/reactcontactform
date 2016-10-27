@@ -40,7 +40,6 @@ class ManageContactPage extends Component {
     }
 
     setContactState(event) {
-        console.log(event.target);
         this.setState({dirty: true});
         const contact = this.state.contact;
         const field = event.target.id;

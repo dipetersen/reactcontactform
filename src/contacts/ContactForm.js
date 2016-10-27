@@ -21,13 +21,13 @@ class ContactForm extends Component {
     renderTextInput(id, label, value) {
         console.log(`Rendering Text Input with the following id::${id} :: label:: ${label} :: value: ${value}`);
         return this.renderField(id,label,
-            <input type="text" onChange={this.props.onChange} className="form-control" id={id} ref={id} defaultValue={value}/>
+            <input type="text" onChange={this.props.onChange} className="form-control" id={id} value={value} />
         )
     }
 
     renderTextArea(id, label, value) {
         return this.renderField(id, label,
-            <textarea className="form-control" onChange={this.props.onChange} id={id} ref={id} defaultValue={value}/>
+            <textarea className="form-control" onChange={this.props.onChange} id={id} value={value}/>
         )
     }
 
@@ -39,7 +39,7 @@ class ContactForm extends Component {
             return <option key={a} value={a}>{f}</option>
         })
         return this.renderField(id,label,
-            <select className="form-control" id={id} ref={id} defaultValue={value} onChange={this.props.onChange}>
+            <select className="form-control" id={id} value={value} onChange={this.props.onChange}>
                 {options}
             </select>
         )
@@ -56,6 +56,7 @@ class ContactForm extends Component {
 
     render() {
         console.log("contact form render");
+        console.log("this.props.contact");
         console.log(this.props.contact);
         return (
             <div className="form-horizontal">
