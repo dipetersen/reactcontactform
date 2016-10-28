@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 
 class ContactList extends Component {
+
     render() {
         const createContactRow = function(contact) {
             return (

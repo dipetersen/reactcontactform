@@ -35,7 +35,7 @@ class ContactPage extends Component {
             <div>
                 <h1>Contacts</h1>
                 <Link to="newcontact" className="btn btn-default">Add Contact</Link>
-                <ContactList contacts={this.state.contacts} />
+                <ContactList contacts={this.state.contacts}  />
             </div>
         );
     }
