@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Header from './common/header';
-import { BrowserRouter, Match, Miss } from 'react-router'
+import { MemoryRouter, Match, Miss } from 'react-router'
 import Home from './common/homepage';
 import ContactPage from './contacts/ContactPage';
 import ManageContactPage from './contacts/ManageContactPage';
@@ -9,7 +9,7 @@ import NotFoundPage from './common/notFoundPage.js';
 class App extends Component {
   render() {
     return (
-    <BrowserRouter>
+    <MemoryRouter>
       <div>
         <Header />
           <div className="container-fluid">
@@ -20,7 +20,7 @@ class App extends Component {
               <Miss component={NotFoundPage} />
           </div>
       </div>
-    </BrowserRouter>
+    </MemoryRouter>
     )
   }
 }
