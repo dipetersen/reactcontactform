@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ContactForm from './ContactForm';
-import ContactFormApi from '../api/ContactFormApi';
+import ContactFormApi from '../api/ContactApi';
 import toastr from 'toastr';
 import 'toastr/build/toastr.css';
 

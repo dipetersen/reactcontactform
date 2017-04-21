@@ -9,7 +9,17 @@ class ContactPage extends Component {
         super(props);
         this.state = {
             contacts: []
-        }
+        };
+        this.deleteContact = this.deleteContact.bind(this);
+    }
+
+    
+    deleteContact(id){
+        console.log("deleteContact",id);
+        var contacts = [...this.state.contacts];
+        const idx = contacts.findIndex(contact => contact.ID === id);
+        contacts = [...contacts.slice(0,idx), ...contacts.slice(idx+1)]; 
+        this.setState({contacts});
     }
 
     componentDidMount() {
@@ -35,7 +45,7 @@ class ContactPage extends Component {
             <div>
                 <h1>Contacts</h1>
                 <Link to="newcontact" className="btn btn-default">Add Contact</Link>
-                <ContactList contacts={this.state.contacts}  />
+                <ContactList deleteRow={this.deleteContact} contacts={this.state.contacts}  />
             </div>
         );
     }

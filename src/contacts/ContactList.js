@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
+import DeleteButton from './DeleteButton';
+import ContactFormApi from '../api/ContactFormApi';
 
 class ContactList extends Component {
-
     render() {
         const createContactRow = function(contact) {
             return (
@@ -18,9 +19,9 @@ class ContactList extends Component {
                         <td>{contact.city}</td>
                         <td>{contact.state}</td>
                         <td>{contact.zipCode}</td>
-                        <td>Delete</td>
+                        <td><DeleteButton deleteRow={this.props.deleteRow} id={contact.ID} /></td>
                     </tr>
-            )
+            );
         }
 
         return (
@@ -47,6 +48,10 @@ class ContactList extends Component {
             </div>
         );
     }
+}
+
+ContactList.contextTypes = {
+    router: React.PropTypes.object
 }
 
 export default ContactList;

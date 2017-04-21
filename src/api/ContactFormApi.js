@@ -1,3 +1,6 @@
+
+import $ from 'jquery';
+
 class ContactFormApi {
     constructor() {
         this.webUrl = _spPageContextInfo.webAbsoluteUrl;
